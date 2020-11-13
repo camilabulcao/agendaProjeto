@@ -56,9 +56,9 @@ const getByNome = (request, response) => {
     {  if (error) { 
         return response.status(500).send(error) 
     } else if (contato) {
-         return response.status(400).json({ mensagem: 'Ops contato não encontrado!', }
-         ) } else {
-            return response.status(200).send(contato) 
+                 return response.status(200).send(contato) 
+         } else {
+            return response.status(400).json({ mensagem: 'Ops contato não encontrado!', })
             } 
         }) 
     }
