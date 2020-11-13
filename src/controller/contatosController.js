@@ -77,10 +77,32 @@ const deleteContato = (request, response) =>{
     })
 }    
 
+//atualizando o celular
+const updateCelular = (request, response) =>{
+    const idParams = request.params.id
+    const celularBody = request.body
+    const atualizar = {new: true} //atualizando
+
+    contatoCollections.findByIdAndUpdate(idParams,
+         celularBody, atualizar, (error,contato) => {
+             if(error){
+                return response.status(500).send(error)
+             }else if(contato){
+                return response.status(200).send({
+                    message: "Celular atualizado com sucesso",contato
+             })
+
+          }else{
+              return response.status(404).send("celular não encontrado")
+         }
+})
+}
+
 module.exports = {
     getAll,
     addContato,
     getContatoID,
     getByNome,
-    deleteContato
+    deleteContato,
+    updateCelular
 }
