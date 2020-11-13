@@ -48,7 +48,7 @@ const getContatoID = (request, response) => {
     })
 }
 
-//getByNome
+//getByNome - não está retornando e não consegui identificar o erro ainda
 const getByNome = (request, response) => { 
     const nomeParms = request.params.nome 
     console.log(nomeParms)
@@ -97,6 +97,23 @@ const updateCelular = (request, response) =>{
          }
 })
 }
+// atualizando o contato
+const updateContato = (request, response) =>{
+    const idParams = request.params.id
+    const contatoBody = request.body
+    const atualizarContato = {new: true}
+
+    contatoCollections.findByIdAndUpdate(idParams, contatoBody, atualizarContato, (error,contato) =>{
+        if(error){
+            return response.status(500).send(error)
+        }else {
+            return response.status(200).send({
+                mensagem: 'Contato alterado com sucesso',
+                contato
+    } )
+}
+    })
+}
 
 module.exports = {
     getAll,
@@ -104,5 +121,6 @@ module.exports = {
     getContatoID,
     getByNome,
     deleteContato,
-    updateCelular
+    updateCelular, 
+    updateContato
 }

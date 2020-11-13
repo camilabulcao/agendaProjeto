@@ -7,6 +7,7 @@ router.post("/criar", controller.addContato)
 router.get("/id/:id", controller.getContatoID)
 router.get("/nome/:nome", controller.getByNome)
 router.delete("/id/:id", controller.deleteContato)
-router.put("/atualizar/:id", controller.updateCelular)
+router.put("/atualizar/:id", controller.updateContato)
+router.patch("/atualizar/telefone/:id", controller.updateCelular)
 
 module.exports = router
