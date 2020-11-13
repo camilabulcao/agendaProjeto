@@ -1,9 +1,10 @@
-const contatoCollection = require("../models/contatoSchema")
+const { response } = require("express")
+const contatoCollections = require("../models/contatoSchema")
 
 const getAll = (request, response)=>{
     console.log(request.url)
 
-    contatoCollection.find((error, contatos) =>{
+    contatoCollections.find((error, contatos) =>{
         if(error){
             return response.status(500).send(error)
         } else{
@@ -30,8 +31,31 @@ const addContato = (request, response)=>{
         }
     })
 }
+//getContatoID
+const getContatoID = (request, response) =>{
+    const idParams = request.params.id
+    contatoCollections.findById(idParams, (error, contatoID)=>{
+        if(error){
+            return response.status(500).send(error)
+        }else{
+            if(contatoID){
+                return response.status(200).send(contatoID)
+            }else{
+                return response.status(404).send("Pessoa não encontrada")
+            }
+        }
+
+    })
+}
+
+//getByNome
+const getByNome = (request, response) =>{
+    const nomeParms = request.params.nome
+    contatoCollection.find({})
+}
 
 module.exports = {
     getAll,
-    addContato
+    addContato,
+    getContatoID
 }
