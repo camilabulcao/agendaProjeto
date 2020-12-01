@@ -1,7 +1,5 @@
 # agendaProjeto
-Projeto da Semana 14 Reprograma
-
- Utilizando o CRUD (Create, Read, Update e Delete) feito no Node.js
+Projeto utilizando o CRUD (Create, Read, Update e Delete) feito no Node.js
 
 Criar uma API Agenda para reunir contatos do nosso usuário.
 
